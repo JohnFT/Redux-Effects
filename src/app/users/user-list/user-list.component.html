@@ -1,4 +1,25 @@
-<div class="card-columns">
+<div class="row" *ngIf="isloading">
+  <div class="col">
+    <div class="alert alert-info text-ceter d-flex">
+      <i class="fa fa-cog fa-spin "></i>
+      <h2>Espere</h2>
+    </div>
+  </div>
+</div>
+
+
+<div class="row" *ngIf="error">
+  <div class="col">
+    <div class="alert alert-danger text-ceter ">
+      <i class="fa fa-times"></i>
+      <h2>Error: {{error.status}}</h2>
+      <p>{{error.message}}</p>
+      <p>{{error.url}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card-columns" *ngIf="!isloading && !error">
   <div class="card" *ngFor="let user of users">
     <img class="card-img-top" [src]="user.avatar" alt="user image">
     <div class="card-body">

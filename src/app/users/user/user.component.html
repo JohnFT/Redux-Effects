@@ -1,3 +1,34 @@
-<p>
-  user works!
-</p>
+<div class="row" *ngIf="isloading">
+  <div class="col">
+    <div class="alert alert-info text-ceter d-flex">
+      <i class="fa fa-cog fa-spin "></i>
+      <h2>Espere</h2>
+    </div>
+  </div>
+</div>
+
+
+<div class="row" *ngIf="error">
+  <div class="col">
+    <div class="alert alert-danger text-ceter ">
+      <i class="fa fa-times"></i>
+      <h2>Error: {{error.status}}</h2>
+      <p>{{error.message}}</p>
+      <p>{{error.url}}</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row" *ngIf="!isloading && !error">
+  <div class="col-3">
+    <img [src]="user.avatar" alt="user image" class="img-circle">
+  </div>
+  <div class="col-9">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Id: </strong> {{user.id}}</li>
+      <li class="list-group-item"><strong>Name:</strong> {{user.first_name}}</li>
+      <li class="list-group-item"><strong>LastName</strong> {{user.last_name}}</li>
+    </ul>
+  </div>
+</div>
